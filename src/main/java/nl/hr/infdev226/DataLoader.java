@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class DataLoader {
     /**
@@ -17,13 +14,18 @@ public class DataLoader {
      *
      * You will:
      * 1. choose a JCF-data structure and argument why you chose that one
+     * Arraylist because its fast!
+     *
      * 2. fill it with some data
+     * All ready done
      * 3. Explore and use existing JCF-algorithms
      * -. along the way you'll also learn about generics, comparators
      *
      * Be sure to read up on all this stuff. For example here:
      * http://docs.oracle.com/javase/tutorial/collections/TOC.html
      */
+
+
     public static void main(String[] args) {
         BufferedReader br = getFileReader("Monitoring_SMALL.csv");
 
@@ -37,8 +39,19 @@ public class DataLoader {
         System.out.println("En nu gesorteerd.. hoop ik");
         for(Monitoring x : col)
             System.out.println(x.toString());
-        //TODO now sort the collection on 'type'
 
+
+        //TODO now sort the collection on 'type'
+        Collections.sort(col, new Comparator<Monitoring>() {
+            @Override
+            public int compare(Monitoring o1, Monitoring o2) {
+                return 0;
+            }
+        });
+
+        for(o1 : o2){
+            System.out.println(x.toString());
+        }
         //TODO shuffle the collection in random order
 
         //TODO find the lowest 'UnitId'
