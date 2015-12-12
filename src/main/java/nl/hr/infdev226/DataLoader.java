@@ -49,6 +49,11 @@ public class DataLoader {
             }
         });
 
+
+        //hier ben ik:
+        //http://stackoverflow.com/questions/6957631/sort-java-collection
+        //https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
+
         for(o1 : o2){
             System.out.println(x.toString());
         }
