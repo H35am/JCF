@@ -53,6 +53,7 @@ public class DataLoader {
         //hier ben ik:
         //http://stackoverflow.com/questions/6957631/sort-java-collection
         //https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
+        //http://zeroturnaround.com/rebellabs/java-8-explained-applying-lambdas-to-java-collections/
 
         for(o1 : o2){
             System.out.println(x.toString());
