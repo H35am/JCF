@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class DataLoader {
     /**
@@ -22,13 +25,18 @@ public class DataLoader {
      * http://docs.oracle.com/javase/tutorial/collections/TOC.html
      */
     public static void main(String[] args) {
-        BufferedReader br = getFileReader("Monitoring.csv");
+        BufferedReader br = getFileReader("Monitoring_SMALL.csv");
 
         //TODO change to a lower level interface of you liking
-        Collection<Monitoring> col = getCollection(br);
+        ArrayList<Monitoring> col = getCollection(br);
 
         //TODO sort the collection on 'beginTime'
-
+        for(Monitoring x : col)
+            System.out.println(x.toString());
+        Collections.sort(col, new BeginTimeComparator());
+        System.out.println("En nu gesorteerd.. hoop ik");
+        for(Monitoring x : col)
+            System.out.println(x.toString());
         //TODO now sort the collection on 'type'
 
         //TODO shuffle the collection in random order
@@ -46,14 +54,15 @@ public class DataLoader {
      * @param br
      * @return
      */
-    private static Collection<Monitoring> getCollection(BufferedReader br){
-        Monitoring mon = new Monitoring();
-        Collection<Monitoring> collection = null; //TODO chose your collection and instantiate it here
+    private static ArrayList<Monitoring> getCollection(BufferedReader br){
+        //ZIT EEN FOUT IN DE CODE, 'MON' WERD IN MEMORY OPGESLAGEN DUS VERPLAATST NAAR DE WHILE LOOP!!!!!!! SLAAT NERGENS OP AAN TE MAKEN BUITEN DE LOOP, BEUNHAAS
+        ArrayList<Monitoring> collection = new ArrayList(); //TODO chose your collection and instantiate it here
         try {
             br.readLine(); //skip the first line
             String line = br.readLine();
 
             while(line != null) {
+                Monitoring mon = new Monitoring();
                 mon.create(line);
                 collection.add(mon);
                 line = br.readLine();

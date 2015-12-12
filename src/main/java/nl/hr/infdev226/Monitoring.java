@@ -17,9 +17,7 @@ public class Monitoring{
     private double sum;
 
     public Monitoring create(List<String> data){
-        return this.create(
-                data.get(0),
-                data.get(1),
+        return this.create(data.get(0),data.get(1),
                 data.get(2),
                 data.get(3),
                 data.get(4),
