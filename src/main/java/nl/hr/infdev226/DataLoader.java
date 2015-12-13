@@ -56,6 +56,7 @@ public class DataLoader {
         //http://www.java-examples.com/find-minimum-element-java-arraylist-example
         //http://www.java2s.com/Book/Java/0080__Collections/0100__Collections.htm
         //http://www.tutorialspoint.com/java/util/collections_min_comparator.htm
+        //http://www.tutorialspoint.com/java/util/collections_binarysearch_comparator.htm
 
 
         //TODO shuffle the collection in random order
@@ -82,13 +83,13 @@ public class DataLoader {
 
 
         //TODO find the amount of elements that were sent on 'endTime' = 2015-03-10 (just the date)
-        EndTimeComaparator endTime = new EndTimeComaparator();
-        Object supr = Collections.sort(col, endTime);
+        EndTimeComparator endTime = new EndTimeComparator();
+
         String findThis = "2015-03-10";
-        Collections.binarySearch(col, findThis, null);
+        int index = Collections.binarySearch(col, findThis, endTime);
         System.out.println("Hier komt 'endTime= 2015-03-10' :");
 
-        System.out.println();
+        System.out.println(index);
 
 
     }
