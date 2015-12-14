@@ -35,7 +35,8 @@ public class DataLoader {
         //TODO sort the collection on 'beginTime'
         for (Monitoring x : col)
             System.out.println(x.toString());
-        Collections.sort(col, new BeginTimeComparator());
+        BeginTimeComparator beginTime = new BeginTimeComparator();
+        Collections.sort(col,beginTime);
         System.out.println("En nu gesorteerd op beginTime:");
         for (Monitoring x : col)
             System.out.println(x.toString());
@@ -68,29 +69,33 @@ public class DataLoader {
 
         //TODO find the lowest 'UnitId'
         UnitIdComparator minUnitId = new UnitIdComparator();
-
         System.out.println("Hier komt Minimum UnitID:");
-
-            System.out.println(Collections.min(col, minUnitId));
+        System.out.println(Collections.min(col, minUnitId));
 
 
         //TODO find the maximum 'beginTime'
         UnitIdComparator maxUnitId = new UnitIdComparator();
-
         System.out.println("Hier komt Maximum UnitID:");
-
-            System.out.println(Collections.max(col, maxUnitId));
+        System.out.println(Collections.max(col, maxUnitId));
 
 
         //TODO find the amount of elements that were sent on 'endTime' = 2015-03-10 (just the date)
         EndTimeComparator endTime = new EndTimeComparator();
-
         String findThis = "2015-03-10";
-        int index = Collections.binarySearch(col, findThis, endTime);
+        Collections.sort(col, endTime);
+
+        for(Monitoring x : col){
+                 if(x.getEndTime().equals(findThis)){
+                     System.out.println("Hier komt 'endTime= 2015-03-10' :");
+                     System.out.println(x.toString());
+
+                 }
+        }
+ /* int index = Collections.binarySearch(col, findThis.toString(), null);
         System.out.println("Hier komt 'endTime= 2015-03-10' :");
 
         System.out.println(index);
-
+        */
 
     }
 
