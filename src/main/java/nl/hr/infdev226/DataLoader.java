@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class DataLoader {
@@ -36,7 +39,7 @@ public class DataLoader {
         for (Monitoring x : col)
             System.out.println(x.toString());
         BeginTimeComparator beginTime = new BeginTimeComparator();
-        Collections.sort(col,beginTime);
+        Collections.sort(col, beginTime);
         System.out.println("En nu gesorteerd op beginTime:");
         for (Monitoring x : col)
             System.out.println(x.toString());
@@ -81,21 +84,21 @@ public class DataLoader {
 
         //TODO find the amount of elements that were sent on 'endTime' = 2015-03-10 (just the date)
         EndTimeComparator endTime = new EndTimeComparator();
-        String findThis = "2015-03-10";
+
+
         Collections.sort(col, endTime);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate findThis = LocalDate.parse("2015-03-10", dtf);
+        System.out.println("Here is 'endTime= 2015-03-10' :");
+        for (Monitoring x : col) {
+            if (x.getEndTime().toLocalDate().equals(findThis)) {
 
-        for(Monitoring x : col){
-                 if(x.getEndTime().equals(findThis)){
-                     System.out.println("Hier komt 'endTime= 2015-03-10' :");
-                     System.out.println(x.toString());
+                System.out.println(x.toString());
 
-                 }
+            }
         }
- /* int index = Collections.binarySearch(col, findThis.toString(), null);
-        System.out.println("Hier komt 'endTime= 2015-03-10' :");
 
-        System.out.println(index);
-        */
+
 
     }
 
